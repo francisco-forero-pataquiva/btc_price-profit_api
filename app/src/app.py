@@ -11,9 +11,7 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
 logger = logging.getLogger(__name__)
 
-origins = [
-    "http://localhost:8000",
-]
+origins = ["*"],
 
 app.add_middleware(
     CORSMiddleware,
