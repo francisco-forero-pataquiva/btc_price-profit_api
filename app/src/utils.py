@@ -8,12 +8,12 @@ def process_csv(path:str) -> dict:
     _dict = df.to_dict('records')
     return _dict
 
-def calculate_markup(init_value: float, final_value: float) -> float:
-    mk = 100 * (final_value / init_value)
-    return mk
+def calculate_rentability(init_value: float, final_value: float) -> float:
+    f = (final_value / init_value)
+    r = (f - 1) * 100
+    return r
 
-def calculate_profit(invest_value: float ,mk: float) -> dict:
-    r = (mk - 1) * 100
+def calculate_profit(invest_value: float ,r: float) -> dict:
     rentability_value = (invest_value * r)/100
     invest_value += rentability_value
     return invest_value    
