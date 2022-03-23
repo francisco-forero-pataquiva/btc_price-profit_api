@@ -6,21 +6,21 @@ from src.utils import calculate_rentability, calculate_profit, process_csv
 from typing import Optional
 from fastapi_utils.tasks import repeat_every
 
-
+from fastapi.middleware import Middleware
 from fastapi.middleware.cors import CORSMiddleware
-app = FastAPI()
 logger = logging.getLogger(__name__)
 
-origins = ["*"],
+middleware = [
+    Middleware(
+        CORSMiddleware,
+        allow_origins=['*'],
+        allow_credentials=True,
+        allow_methods=['*'],
+        allow_headers=['*']
+    )
+]
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
+app = FastAPI(middleware=middleware)
 
 @app.on_event("startup")
 @repeat_every(seconds=60*60*24)
