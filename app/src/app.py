@@ -7,19 +7,8 @@ from typing import Optional
 from fastapi_utils.tasks import repeat_every
 
 
-from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
 logger = logging.getLogger(__name__)
-
-origins = ["*"],
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
 
 
 @app.on_event("startup")
