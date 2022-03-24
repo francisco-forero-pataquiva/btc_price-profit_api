@@ -5,7 +5,7 @@ from src.database import fetch_price_history, fetch_price, mongo_import
 from src.utils import calculate_rentability, calculate_profit, process_csv
 from typing import Optional
 from fastapi_utils.tasks import repeat_every
-
+from mangum import Mangum
 from fastapi.middleware import Middleware
 from fastapi.middleware.cors import CORSMiddleware
 logger = logging.getLogger(__name__)
@@ -21,6 +21,8 @@ middleware = [
 ]
 
 app = FastAPI(middleware=middleware)
+handler = Mangum(app)
+
 
 @app.on_event("startup")
 @repeat_every(seconds=60*60*24)
