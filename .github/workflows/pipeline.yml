@@ -14,11 +14,6 @@ jobs:
     # Define the runner used in the workflow
     runs-on: ubuntu-latest
     steps:   
-      # Creates .env
-      - name: Make envfile
-        uses: SpicyPizza/create-envfile@v1.3
-        with:
-        MONGO_DETAILS: ${{ secrets.MONGO_DETAILS}}
       # Check out repo so our workflow can access it
       - uses: actions/checkout@v2
       # Step-1 Setup Python

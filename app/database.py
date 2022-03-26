@@ -1,10 +1,10 @@
 from motor.motor_asyncio import AsyncIOMotorClient
 from app.schemas import Price
-from decouple import config
-from typing import list
+from typing import List
+import os
 
 
-MONGO_DETAILS = config('MONGO_DETAILS')
+MONGO_DETAILS = os.getenv('MONGO_DETAILS')
 
 client = AsyncIOMotorClient(MONGO_DETAILS)
 
