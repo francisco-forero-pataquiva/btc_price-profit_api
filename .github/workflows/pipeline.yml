@@ -47,9 +47,9 @@ jobs:
       - name: Create archive of dependencies
         run: |
           cd ./venv/lib/python3.9/site-packages
-          zip -r9 ../../../../api.zip .
+          zip -r9 ../../../../fun.zip .
       - name: Add API files to Zip file
-        run: cd ./api && zip -g ../api.zip -r .
+        run: cd ./api && zip -g ../fun.zip -r .
       - name: Upload zip file artifact
         uses: actions/upload-artifact@v2
         with:
@@ -80,7 +80,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
       - name: Deploy new Lambda
-        run: aws lambda update-function-code --function-name fastapi --s3-bucket fastapi123718237193712983 --s3-key api.zip
+        run: aws lambda update-function-code --function-name serverless-py --s3-bucket serverlessapi-py --s3-key fun.zip
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_SECRET_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
