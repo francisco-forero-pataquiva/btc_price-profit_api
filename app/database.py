@@ -1,5 +1,5 @@
 from motor.motor_asyncio import AsyncIOMotorClient
-from schemas import Price
+from app.schemas import Price
 from typing import List
 
 
