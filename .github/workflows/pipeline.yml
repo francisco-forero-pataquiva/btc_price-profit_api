@@ -14,9 +14,14 @@ jobs:
     # Define the runner used in the workflow
     runs-on: ubuntu-latest
     steps:   
+      # Creates .env
+      - name: Make envfile
+        uses: SpicyPizza/create-envfile@v1.3
+        with:
+        envkey_SOME_API_KEY: "MONGO_DETAILS"
+        envkey_SECRET_KEY: ${{ secrets.MONGO_DETAILS}}
       # Check out repo so our workflow can access it
       - uses: actions/checkout@v2
-      
       # Step-1 Setup Python
       - name: Set up Python
         # This action sets up a Python environment for use in actions
@@ -44,9 +49,6 @@ jobs:
       - name: Activate Virtual ENV
         run: python -m venv venv && source venv/bin/activate && pip3 install -r requirements.txt
         if: steps.cache-venv.outputs.cache-hit != 'true'
-      - name: Include Mongo URL
-        env: | 
-          MONGO_DETAILS: ${{ secrets.MONGO_DETAILS }}
       - name: Create archive of dependencies
         run: |
           cd ./venv/lib/python3.9/site-packages
