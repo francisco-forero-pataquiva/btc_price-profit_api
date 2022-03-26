@@ -1,7 +1,7 @@
 from fastapi import FastAPI
-from schemas import Rentability
-from database import fetch_price_history, fetch_price
-from utils import calculate_rentability, calculate_profit
+from app.schemas import Rentability
+from app.database import fetch_price_history, fetch_price
+from app.utils import calculate_rentability, calculate_profit
 from typing import Optional
 from fastapi.middleware import Middleware
 from fastapi.middleware.cors import CORSMiddleware
