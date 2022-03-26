@@ -1,9 +1,12 @@
 from motor.motor_asyncio import AsyncIOMotorClient
 from app.schemas import Price
-from typing import List
+from decouple import config
+from typing import list
 
 
-client = AsyncIOMotorClient("mongodb+srv://franciscopataquiva:^XLUP8u!4YbJPP@cluster0.gnqpr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+MONGO_DETAILS = config('MONGO_DETAILS')
+
+client = AsyncIOMotorClient(MONGO_DETAILS)
 
 db = client["prices"]
 

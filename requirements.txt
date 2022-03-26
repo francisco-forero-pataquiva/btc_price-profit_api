@@ -2,5 +2,6 @@ fastapi==0.75.0
 motor==2.5.1
 pydantic==1.8.2
 uvicorn==0.17.4
+python-decouple==3.6
 pymongo[srv]
 mangum

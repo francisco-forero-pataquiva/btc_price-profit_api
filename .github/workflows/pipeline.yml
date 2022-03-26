@@ -44,6 +44,9 @@ jobs:
       - name: Activate Virtual ENV
         run: python -m venv venv && source venv/bin/activate && pip3 install -r requirements.txt
         if: steps.cache-venv.outputs.cache-hit != 'true'
+      - name: Include Mongo URL
+        env: | 
+          MONGO_DETAILS: ${{ secrets.MONGO_DETAILS }}
       - name: Create archive of dependencies
         run: |
           cd ./venv/lib/python3.9/site-packages
