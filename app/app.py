@@ -16,7 +16,7 @@ middleware = [
         allow_headers=['*']
     )
 ]
-app = FastAPI(openapi_prefix="/help", middleware=middleware)
+app = FastAPI(middleware=middleware, openapi_prefix="/man",)
 
 
 @app.get('/')
