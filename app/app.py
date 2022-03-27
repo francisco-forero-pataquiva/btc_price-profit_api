@@ -21,7 +21,7 @@ app = FastAPI(middleware=middleware)
 
 @app.get('/')
 async def root():
-    return {'message': "CRYPTO API 🤑"}
+    return {'message': "BTC PRICE & PROFIT API 🤑"}
 
 @app.get("/bitcoin/")
 async def get_bitcoin_price(_limit: int = 30, _skip: Optional[int] = 1):
