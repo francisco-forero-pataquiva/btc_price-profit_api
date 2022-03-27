@@ -1,11 +1,11 @@
-# Crypto prices backend 
+# BTC Price & Profit API 
 
-## About <a name = "about"></a>
+## About
 
 This is an API that works as the backend of <a href = "https://bitcoin-chart-project.web.app/">this project</a>. It was written using FastAPI and uses MongoDB. 
 
 
-### Installing
+## Installing
 
 Use the following commands to create a virtual environment on your Linux/Mac:
 
@@ -20,12 +20,20 @@ To install the dependencies of the project, use this command:
 python3 -m pip install -r requirements.txt
 ```
 
-To start the API, just run the main.py file.
+To run the API locally, just run the main.py file.
+
+## Deployment
 
 ### Docker
 
-To facilitate the creation of the docker image use the docker-compose file with this command:
+In the main branch, to facilitate the creation of the docker image use the docker-compose file with this command:
 
 ```
 docker-compose up
 ```
+### AWS Lambda
+
+In the "lambda" branch, the deployment is done directly through a CI/CD Pipeline that deploys the API to AWS.
+
+## Usage
+To read the documentation click <a href = "https://oynv41e6xi.execute-api.us-east-1.amazonaws.com/test/help">here</a> 
