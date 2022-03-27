@@ -16,7 +16,7 @@ middleware = [
         allow_headers=['*']
     )
 ]
-app = FastAPI(middleware=middleware, root_path="/dev/",)
+app = FastAPI(middleware=middleware)
 
 
 @app.get('/')
