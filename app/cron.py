@@ -9,7 +9,7 @@ def populate_db() -> None:
         "https://raw.githubusercontent.com/coinmetrics/data/master/csv/btc.csv")
     mongo_import(_csv)
     
-schedule.every().day.at("21:15").do(populate_db)
+schedule.every().hour.do(populate_db)
 
 while True:
     schedule.run_pending()
