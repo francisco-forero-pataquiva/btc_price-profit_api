@@ -4,8 +4,10 @@ from src.database import fetch_price_history, fetch_price, mongo_import
 from src.utils import calculate_rentability, calculate_profit, process_csv
 from typing import Optional
 from fastapi_utils.tasks import repeat_every
+
 from fastapi.middleware import Middleware
 from fastapi.middleware.cors import CORSMiddleware
+
 
 middleware = [
     Middleware(
@@ -20,7 +22,7 @@ middleware = [
 app = FastAPI(middleware=middleware)
 
 
-@repeat_every(seconds=60 * 60 * 12)
+@repeat_every(seconds=60*60*12)
 def populate_db() -> None:
     _csv = process_csv(
         "https://raw.githubusercontent.com/coinmetrics/data/master/csv/btc.csv")

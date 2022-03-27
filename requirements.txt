@@ -6,3 +6,4 @@ python-decouple==3.6
 uvicorn==0.17.4
 pymongo[srv]
 fastapi_utils
+schedule
