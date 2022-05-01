@@ -1,3 +1,12 @@
+import pandas as pd
+
+
+def process_csv(path: str) -> dict:
+    df = pd.read_csv(path)
+    df = df[["time", "PriceUSD"]]
+    df = df.rename({'time': 'date', 'PriceUSD': 'price_usd'}, axis=1)
+    _dict = df.to_dict('records')
+    return _dict
 
 def calculate_rentability(init_value: float, final_value: float) -> float:
     f = (final_value / init_value)
