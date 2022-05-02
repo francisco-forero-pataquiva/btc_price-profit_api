@@ -3,7 +3,6 @@ from app.utils import process_csv
 
 
 def populate_db(event, lambda_context) -> None:
-    lightID = event
     _csv = process_csv(
         "https://raw.githubusercontent.com/coinmetrics/data/master/csv/btc.csv")
     print("Csv processed!")
