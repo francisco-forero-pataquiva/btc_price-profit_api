@@ -7,7 +7,5 @@ def populate_db(event, lambda_context) -> None:
         "https://raw.githubusercontent.com/coinmetrics/data/master/csv/btc.csv")
     print("Csv processed!")
     mongo_import(_csv)
-    
-populate_db()
-        
+            
 # schedule.every().hour.do(populate_db)
