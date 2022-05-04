@@ -34,6 +34,3 @@ docker-compose up
 ### AWS Lambda
 
 In the "lambda" branch, the deployment is done directly through a CI/CD Pipeline that deploys the API to AWS.
-
-## Usage
-To read the documentation click <a href = "https://oynv41e6xi.execute-api.us-east-1.amazonaws.com/test/help">here</a> 
