@@ -1,15 +1,19 @@
+import imp
 from motor.motor_asyncio import AsyncIOMotorClient
 from app.schemas import Price
 from typing import List
 import os
+import pymongo
+
 
 
 MONGO_DETAILS = os.getenv('MONGO_DETAILS')
 
+client_sync = pymongo.MongoClient(MONGO_DETAILS)
 client = AsyncIOMotorClient(MONGO_DETAILS)
-
+db_sync = client_sync["prices"]
+coll_sync = db_sync["btc_price"]
 db = client["prices"]
-
 coll = db["btc_price"]
 
 async def fetch_price(date:str):
@@ -26,9 +30,13 @@ async def fetch_price_history(_limit: int, _skip: int) -> List:
 
 def mongo_import(_csv: dict) -> bool:
     print(MONGO_DETAILS)
-    coll.create_index([('date', 1)], unique=True)
-    coll.delete_many({})
-    coll.insert_many(_csv)
+    print(coll_sync.count())
+    coll_sync.create_index([('date', 1)], unique=True)
+    print(coll_sync.count())
+    coll_sync.delete_many({})
+    print(coll_sync.count())
+    coll_sync.insert_many(_csv)
+    print(coll_sync.count())
     print(coll)
     return True
     
