@@ -27,7 +27,7 @@ async def fetch_price_history(_limit: int, _skip: int) -> List:
 def mongo_import(_csv: dict) -> bool:
     print(MONGO_DETAILS)
     coll.create_index([('date', 1)], unique=True)
-    coll.delete_many({})
+#     coll.delete_many({})
     coll.insert_many(_csv)
     print(coll)
     return True
