@@ -32,11 +32,12 @@ async def fetch_price_history(_limit: int, _skip: int) -> List:
     return prices
 
 
-def mongo_import(_csv: dict) -> bool:
-    coll_sync.create_index([('date', 1)], unique=True)
-    coll_sync.delete_many({})
-    coll_sync.insert_many(_csv)
-    if coll_sync.count() > 0:
-        return True
-    return False
+def mongo_import(len_csv: int,_csv: dict) -> int:
+    if len_csv != coll_sync.count():
+        coll_sync.create_index([('date', 1)], unique=True)
+        coll_sync.delete_many({})
+        coll_sync.insert_many(_csv)
+    else:
+        print("Data already synced!")
+    return coll_sync.count()
     
